@@ -7,7 +7,7 @@
 #  numbers in ascending order. If it's "desc," then the list should be in descending
 #  order, and if it's "none," it should return the original list unaltered.
 
-to_be_sorted = [6, 7, 8, 1, 2, 3, 5, 4]
+to_be_sorted = [6, 7, 8, 1, 2, 3, 5, 4, 100, 122]
 
 def sort_list(list, type_sort):
     try:
