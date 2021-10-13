@@ -6,17 +6,18 @@
 
 ##author note: ok, so i hardly understand binary besides the crash course i received in calculating binary vs IP address for
 ##properly establishing VPC subnets. with that said, i checked my work against a calculator and it's all good.
+##i didn't need to make it simple and did not limit it to <1024.
 
-## simple ask for number w input validation. i am pretty sure this works past 1024 but that wasn't the challenge.
+## simple ask for number w input validation.
 def getNumber():
     number = 0
     numberValidation = None
     while numberValidation == None:
-        number = input('Choose a number to be converted, less than 1024. \n')
+        number = input('Choose a number to be converted to binary. \n')
         try:
             number = int(number)
-            if number >= 0 and number <= 1024:
-                numberValidation = 1
+            if number >= 0: #and number <= 1024: ##removed bc i didn't need
+                numberValidation = True
             else:
                 print('Not a valid input.')
         except:
@@ -29,7 +30,7 @@ def digitDetermination(number):
     digit = 2
     binaryLength = [0]
     while number >= digit:
-        print(number, digit)
+        #print(number, digit)
         binaryLength.append(digit)
         digit += digit
     binaryLength.reverse()
@@ -47,11 +48,11 @@ def calculateBinaryValues(number, binaryLength):
             binaryList.append('0')
     return binaryList
     
+def mainLoop():
+    value = getNumber()
+    testDigits = digitDetermination(value)
+    binaryValues = calculateBinaryValues(value, testDigits)
+    binaryString = ''.join(binaryValues)
+    return binaryString
 
-testValue = 2048    
-testDigits = digitDetermination(testValue)
-print(testDigits)
-
-binaryValues = calculateBinaryValues(testValue, testDigits)
-
-print(binaryValues)
+print(mainLoop())
